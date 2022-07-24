@@ -9,6 +9,7 @@ const routes: Routes = [
       import('./products/products.module').then((m) => m.ProductsModule),
   },
   { path: '', redirectTo: 'produtos', pathMatch: 'full' },
+  { path: 'carrinho', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: '**', component: NotFoundComponent },
 ];
 
