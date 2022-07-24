@@ -10,7 +10,8 @@ export class CartService {
   constructor() {}
 
   getCart() {
-    return JSON.parse(localStorage.getItem('cart') || '');
+    this.items = JSON.parse(localStorage.getItem('cart') || '[]');
+    return this.items;
   }
 
   addToCart(product: ICartItem) {
@@ -21,5 +22,10 @@ export class CartService {
   clearCart() {
     this.items = [];
     localStorage.clear();
+  }
+
+  removeItemFromCart(productId: number) {
+    this.items = this.items.filter((item) => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(this.items));
   }
 }
