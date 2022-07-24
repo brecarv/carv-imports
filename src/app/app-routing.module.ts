@@ -10,6 +10,7 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'produtos', pathMatch: 'full' },
   { path: 'carrinho', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
+  { path: 'contato', loadChildren: () => import('./contact-us/contact-us.module').then(m => m.ContactUsModule) },
   { path: '**', component: NotFoundComponent },
 ];
 
